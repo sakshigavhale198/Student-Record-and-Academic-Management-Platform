@@ -1,16 +1,16 @@
-from flask import Flask, jsonify, request
+from flask import Flask, jsonify, request, render_template
 
 app = Flask(__name__)
 
 # In-memory database for student records and academic marks
 students = [
-    {"id": 1, "name": "Alice Smith", "course": "Computer Science", "gpa": 3.8},
-    {"id": 2, "name": "Bob Jones", "course": "DevOps Engineering", "gpa": 3.6}
+    {"id": 1, "name": "Alice Smith", "course": "Computer Science"},
+    {"id": 2, "name": "Bob Jones", "course": "DevOps Engineering"}
 ]
 
 @app.route('/')
 def home():
-    return jsonify({"message": "Welcome to the Enterprise Student Record & Academic Management Platform"})
+    return render_template('index.html')
 
 @app.route('/students', methods=['GET'])
 def get_students():
